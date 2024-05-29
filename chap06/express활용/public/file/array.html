@@ -1,0 +1,20 @@
+<script>
+    function addFileBox(){
+        let fileBox = document.createElement("div");
+        fileBox.className = "fileBox";
+        fileBox.innerHTML = `<input type="file" name="many" /><button type="button" onclick="delFileBox(this)">삭제</button>`;
+        form.insertBefore(fileBox, form.title);
+    }
+    function delFileBox(obj){
+        obj.parentNode.remove();
+    }
+</script>
+<form id="form" action="/upload/array" method="post" enctype="multipart/form-data">
+    <div class="fileBox">
+        <input type="file" name="many" /><button type="button" onclick="addFileBox()">추가</button>
+    </div>
+    <input type="text" name="title" />
+    <br>
+    <button type="submit">업로드</button>
+</form>
+  

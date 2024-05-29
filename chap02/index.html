@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+ <html>
+  <head>
+    <meta charset="UTF-8">
+    <title>index 테스트 파일</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        function axiosGet()
+        {
+            axios.get(`/api/get`)
+                .then((result)=>{
+                    console.log(result);
+                    console.log(result.data)
+                    document.querySelector("#result")
+                            .innerHTML = `나는 ${result.data.univ}의 ${result.data["dept"]}에 재학중입니다.`
+                })
+            .catch((error)=>{
+                console.log(error)
+            })
+
+            console.log('axios get 실행');
+        }
+        async function axiosGet_await()
+        {
+            try{
+                let result = await axios.get(`/api/get`)
+                            console.log(result);
+                            console.log(result.data)
+                            document.querySelector("#result")
+                                    .innerHTML = `나는 ${result.data.univ}의 ${result.data["dept"]}에 재학중입니다.`
+                        }
+            catch(error){
+                console.log(error)
+            }
+
+            console.log('axios get 실행');
+        }
+
+        async function axiosPost_await()
+        {
+            try{
+                let result = await axios.post(`/api/post`,{
+                    name : "이제원",
+                    birth : 2001
+                });
+                console.log(result);
+                console.log(result.data)
+                document.querySelector("#result")
+                     .innerHTML = `나는 ${result.data.univ}의 ${result.data["dept"]}에 재학중입니다.`
+                
+                }
+            catch(error){
+                console.log(error)
+            }
+
+            console.log('axios get 실행');
+        }
+    </script>
+  </head>
+  <body>
+        <h1>index.html입니다.</h1>
+        <div>일반 텍스트입니다.</div> 
+        <button type="button" onclick="axiosGet()">axiosGet</button>
+        <button type="button" onclick="axiosGet_await()">axiosGet await</button>
+        <button type="button" onclick="axiosPost_await()">axios Post await</button>
+
+        
+        <ul id="users">
+            <li data-id="zero" data-age = "27" data-gender ="남">zero</li>
+            <li data-id="hero" data-age = "40" data-gender ="남">hero</li>
+            <li data-id="kero" data-age = "20" data-gender ="여">kero</li>
+        </ul>
+  </body>
+</html>

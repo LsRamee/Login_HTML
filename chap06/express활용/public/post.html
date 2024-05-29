@@ -1,0 +1,19 @@
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    function jsonTest(){
+        axios.post("/postData", {
+            id: "kclee",
+            password: "1234",
+        }).then((res)=>{
+            alert(res.data);
+        })
+    }
+</script>
+<form method="post" action="/postData">
+    아이디: <input type="text" name="id">
+    <br>
+    비밀번호: <input type="text" name="password">
+    <br>
+    <button type="submit">로그인</button>
+</form>
+<button type="button" onclick="jsonTest()">JSON테스트</button>
